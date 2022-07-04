@@ -4,10 +4,11 @@
 # Contributer: Andrea Scarpino <andrea@archlinux.org>
 # Contributer: Daniel YC Lin <dlin.tw at gmail>
 # Contributer: Jarek Sedlacek <JarekSedlacek@gmail>
+# Contributer: Pappy <pa314159@users.noreply.github.com>
 
 pkgname=grive-git
-pkgver=520.ffb744a
-pkgrel=1
+pkgver=546.6901fbb
+pkgrel=2
 pkgdesc='An open source Linux client for Google Drive with support for the new Drive REST API and partial sync'
 arch=('i686' 'x86_64')
 url='https://github.com/vitalif/grive2'
@@ -19,8 +20,9 @@ optdepends=("inotify-tools: scheduled syncs and syncs on file change events"
 makedepends=('cmake' 'git' 'boost')
 provides=("grive=${pkgver}")
 conflicts=('grive')
-source=("${pkgname}"::"git+https://github.com/vitalif/grive2")
-sha512sums=('SKIP')
+source=("${pkgname}"::"git+https://github.com/vitalif/grive2" "01-memory.patch")
+sha256sums=('SKIP'
+            'f4801101bcd7f4329a65e065e31298c2c68e1ab5b7313888d1ab2357fc3ece49')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
@@ -29,6 +31,11 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${pkgname}"
+
+	for patch in ${srcdir}/*.patch; do
+		patch -p1 < ${patch}
+	done
+
 	rm -rf build
 	mkdir build
 	cd build

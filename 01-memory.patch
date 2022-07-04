@@ -1,0 +1,13 @@
+diff -rc grive-git-orig/libgrive/src/base/Syncer.hh grive-git/libgrive/src/base/Syncer.hh
+*** grive-git-orig/libgrive/src/base/Syncer.hh	2022-07-04 21:35:39.508249927 +0200
+--- grive-git/libgrive/src/base/Syncer.hh	2022-07-04 21:38:27.115329199 +0200
+***************
+*** 21,26 ****
+--- 21,27 ----
+  
+  #include "util/FileSystem.hh"
+  
++ #include <memory>
+  #include <string>
+  #include <vector>
+  #include <iosfwd>
