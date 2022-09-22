@@ -8,7 +8,7 @@
 
 pkgname=grive-git
 pkgver=546.6901fbb
-pkgrel=2
+pkgrel=3
 pkgdesc='An open source Linux client for Google Drive with support for the new Drive REST API and partial sync'
 arch=('i686' 'x86_64')
 url='https://github.com/vitalif/grive2'
@@ -20,9 +20,13 @@ optdepends=("inotify-tools: scheduled syncs and syncs on file change events"
 makedepends=('cmake' 'git' 'boost')
 provides=("grive=${pkgver}")
 conflicts=('grive')
-source=("${pkgname}"::"git+https://github.com/vitalif/grive2" "01-memory.patch")
+source=("${pkgname}"::"git+https://github.com/vitalif/grive2"
+		"01-memory.patch"
+		"02-libcrypt.patch"
+		)
 sha256sums=('SKIP'
-            'f4801101bcd7f4329a65e065e31298c2c68e1ab5b7313888d1ab2357fc3ece49')
+            'f4801101bcd7f4329a65e065e31298c2c68e1ab5b7313888d1ab2357fc3ece49'
+            '01938dd936cfb4784ec1270fb982affee03f3d14cb373c534b640aa3af67b874')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
